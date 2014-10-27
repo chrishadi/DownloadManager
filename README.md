@@ -3,10 +3,10 @@ DownloadManager
 
 A download manager library written in Java<br>
 
-This is not a multi-part download manager (and doesn't have the capability to download a file in multi-part). But it can download multiple files in multiple threads (one thread per file).<br>
+This is not a multi-part download manager. That means, it does not have the capabilty to download a single file using multiple connection. But it can download multiple files simultaneously using multiple connections.<br>
 
 If you are familiar with download managers, you should find the source code is self-explaining.<br>
-I have included a very short test as an example. It will download this repo's master.zip only in three lines of code. If you are looking for a way to print message when the downloads has finished, the easiest way is to derive the DownloadManager class and override the notifyFinish method.<br>
+I have included a very short test as an example. It will download this repo's master.zip using only three lines of code. For clarity sake the test doesn't print any message when the download has finished. The easiest way to do so is to derive the ```DownloadManager``` class and then override the ```notifyFinish``` method.<br>
 
 Have fun!
 
