@@ -12,7 +12,7 @@ public class Downloader extends Thread {
 	public long jobId;
 	public Date startTime;
 	public Date finishTime;
-	public long downloaded;
+	public long bytesDownloaded;
 	public boolean success;
 	public Exception exception = null;
 
@@ -31,12 +31,12 @@ public class Downloader extends Thread {
 			in = url.openStream();
 			out = new FileOutputStream(this.saveTo);
 
-			this.downloaded = 0;
+			this.bytesDownloaded = 0;
 			int read = 0;
 			while (!this.isInterrupted() && 
 				(read = in.read(buffer)) != -1) {
 				out.write(buffer, 0, read);
-				this.downloaded += read;
+				this.bytesDownloaded += read;
 
 				if (this.pause) {
 					synchronized(this) {
@@ -59,7 +59,7 @@ public class Downloader extends Thread {
 				}
 			} catch (IOException e) {}
 
-			if (this.exception != null) {
+			if (this.exception == null) {
 				this.success = true;
 				this.finishTime = new Date();
 			}
