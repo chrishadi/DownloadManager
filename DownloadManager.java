@@ -265,7 +265,7 @@ public class DownloadManager {
 		if (worker.success) {
 			this.doneList.add(worker.jobId);
 		}
-		this.byteCount += worker.downloaded;
+		this.byteCount += worker.bytesDownloaded;
 		this.workerList.remove(worker);
 		if (!this.stopped) {
 			while (this.nextJobIndex < this.urlList.size()) {
